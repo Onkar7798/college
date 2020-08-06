@@ -15,6 +15,7 @@ bottom.grid()
 
 
 def hide_bottom():
+    root.geometry("300x300")
     for widget in bottom.winfo_children():
         widget.destroy()
 
@@ -83,8 +84,9 @@ def searchCollege(cName, course):
                 if success:
                     l1.configure(text="Colleges Found!")
                     success = False
-                print("College Id: ", i[0], ", College Name: ", i[1], ", Course: ", i[2], ", City: ", i[3], ", Fees: ",
-                      i[4], ", Pincode", i[5])
+                root.geometry("525x300")
+                str1 = "College Id= "+i[0]+", College Name= "+i[1]+", Course= "+i[2]+", City= "+i[3]+", Fees= "+i[4]+", Pincode= "+i[5]
+                l2 = Label(bottom, text=str1).grid(columnspan=3)
     if success:
         l1.configure(text="No Colleges found for the given name and course")
 
@@ -92,13 +94,13 @@ def searchCollege(cName, course):
 def search():
     hide_bottom()
     l1 = Label(bottom, text="College Name: ")
-    l1.grid(column=0, row=1)
-    cName = Entry(bottom, width=30)
-    cName.grid(column=1, row=1, columnspan=2)
+    l1.grid(column=0, row=1, sticky="e")
+    cName = Entry(bottom, width=25)
+    cName.grid(column=1, row=1, columnspan=2, sticky="w")
     l2 = Label(bottom, text="Course: ")
-    l2.grid(column=0, row=2)
-    course = Entry(bottom, width=30)
-    course.grid(column=1, row=2, columnspan=2)
+    l2.grid(column=0, row=2, sticky="e")
+    course = Entry(bottom, width=25)
+    course.grid(column=1, row=2, columnspan=2, sticky="w")
     btn = Button(bottom, text="Submit", command=lambda: searchCollege(cName.get(), course.get()))
     btn.grid(columnspan=3, row=3)
 

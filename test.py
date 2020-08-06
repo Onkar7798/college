@@ -11,10 +11,6 @@ global bottom
 bottom = tk.Frame(root)
 bottom.grid()
 
-def hide_bottom():
-    for widget in bottom.winfo_children():
-        widget.destroy()
-
 
 def newCollege():
     hide_bottom()
@@ -69,6 +65,9 @@ def removeCollege():
     btn = Button(bottom, text="Submit")
     btn.grid(columnspan=3, row=2)
 
+def hide_bottom():
+    for widget in bottom.winfo_children():
+        widget.destroy()
 
 bt1 = Button(top, text="Register College", command=newCollege)
 bt1.grid(column=0, row=0)
