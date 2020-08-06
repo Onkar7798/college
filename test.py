@@ -3,20 +3,23 @@ from tkinter import *
 
 root = tk.Tk()
 root.title("Colleges")
+root.geometry("300x300")
 global top
-top = tk.Frame(root).grid()
+top = tk.Frame(root)
+top.grid()
 global bottom
-bottom = tk.Frame(root).grid()
+bottom = tk.Frame(root)
+bottom.grid()
 
+def hide_bottom():
+    for widget in bottom.winfo_children():
+        widget.destroy()
 
-def success():
-    li = bottom.grid_slaves()
-    for l in li:
-        l.destroy()
 
 def newCollege():
+    hide_bottom()
     l1 = Label(bottom, text="College Id: ")
-    l1.grid(column=0,row=1)
+    l1.grid(column=0, row=1)
     txt1 = Entry(bottom, width=30)
     txt1.grid(column=1, row=1, columnspan=2)
     l2 = Label(bottom, text="College Name: ")
@@ -39,10 +42,12 @@ def newCollege():
     l6.grid(column=0, row=6)
     txt6 = Entry(bottom, width=30)
     txt6.grid(column=1, row=6, columnspan=2)
-    btn = Button(bottom, text="Submit", command=success)
+    btn = Button(bottom, text="Submit")
     btn.grid(columnspan=3, row=7)
 
+
 def searchCollege():
+    hide_bottom()
     l1 = Label(bottom, text="College Name: ")
     l1.grid(column=0, row=1)
     txt1 = Entry(bottom, width=30)
@@ -51,18 +56,25 @@ def searchCollege():
     l2.grid(column=0, row=2)
     txt2 = Entry(bottom, width=30)
     txt2.grid(column=1, row=2, columnspan=2)
-    btn = Button(bottom, text="Submit", command=success)
+    btn = Button(bottom, text="Submit")
     btn.grid(columnspan=3, row=3)
 
-def removeCollege():
-    pass
 
-bt1 = Button(top, text = "Register College", command=newCollege)
+def removeCollege():
+    hide_bottom()
+    l1 = Label(bottom, text="College Id: ")
+    l1.grid(column=0, row=1)
+    txt1 = Entry(bottom, width=30)
+    txt1.grid(column=1, row=1, columnspan=2)
+    btn = Button(bottom, text="Submit")
+    btn.grid(columnspan=3, row=2)
+
+
+bt1 = Button(top, text="Register College", command=newCollege)
 bt1.grid(column=0, row=0)
 bt2 = Button(top, text="Search Colleges", command=searchCollege)
 bt2.grid(column=1, row=0)
 bt3 = Button(top, text="Remove College", command=removeCollege)
 bt3.grid(column=2, row=0)
-
 
 root.mainloop()
