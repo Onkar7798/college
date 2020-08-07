@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 import csv
-from functools import *
+
 
 root = tk.Tk()
 root.title("Colleges")
@@ -68,8 +68,7 @@ def register():
     l6.grid(column=0, row=6)
     pin = Entry(bottom, width=30)
     pin.grid(column=1, row=6, columnspan=2)
-    btn = Button(bottom, text="Submit",
-                 command=lambda: newCollege(cId.get(), cName.get(), course.get(), city.get(), fees.get(), pin.get()))
+    btn = Button(bottom, text="Submit", command=lambda: newCollege(cId.get(), cName.get(), course.get(), city.get(), fees.get(), pin.get()))
     btn.grid(columnspan=3, row=7)
 
 
